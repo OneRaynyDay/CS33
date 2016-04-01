@@ -159,8 +159,9 @@ NOTES:
  */
 int ezThreeFourths(int x) {
   int threeTimes = (x << 1) + x; // Equivalent to saying x * 2 + x
-  int negativeFlag = ~((x >> 31) - 1); // Two's complement forces us to add 1, and then flip it to get the positive number
-  int divideByFour = threeTimes >> 2; // Equivalent to saying x / 4
-  int oneFourth = divideByFour + negativeFlag; // We need to add the negative flag because of two's complement has 1 extra number
+  int negative = x >> 31;
+  int flag = ~((x >> 31) - 1); // Two's complement forces us to add 1, and then flip it to get the positive number
+  int divideByFour = (threeTimes + negative) >> 2; // Equivalent to saying x / 4
+  int oneFourth = divideByFour + flag; // We need to add the negative flag because of two's complement has 1 extra number
   return oneFourth;
 }
