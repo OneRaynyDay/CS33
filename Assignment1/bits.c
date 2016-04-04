@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <Ray Zhang, 104597340>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -23,11 +23,11 @@
 id_struct studentID =
 {
   /* UID number: */
-  "123456789",
+  "104597340",
   /* Last Name: */
-  "Bruin",
+  "Zhang",
   /* First Name: */
-  "Joe",
+  "Ray",
 };
 
 #if 0
@@ -158,10 +158,8 @@ NOTES:
  *   Rating: 3
  */
 int ezThreeFourths(int x) {
-  int threeTimes = (x << 1) + x; // Equivalent to saying x * 2 + x
-  int negative = x >> 31;
-  int flag = ~((x >> 31) - 1); // Two's complement forces us to add 1, and then flip it to get the positive number
-  int divideByFour = (threeTimes + negative) >> 2; // Equivalent to saying x / 4
-  int oneFourth = divideByFour + flag; // We need to add the negative flag because of two's complement has 1 extra number
-  return oneFourth;
+    int temp = x+x+x;
+    int sign = temp >> 31;
+    int temp2 = sign & ((1<<2)+(~1+1));
+    return (temp + temp2) >> 2;
 }
